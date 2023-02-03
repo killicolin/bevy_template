@@ -3,18 +3,22 @@ use bevy::{
     window::{PresentMode, WindowDescriptor, WindowPlugin},
     DefaultPlugins,
 };
+use bevy_editor_pls::EditorPlugin;
 
 pub fn run(width: f32, height: f32) {
-    App::new()
-        .add_plugins(DefaultPlugins.set(WindowPlugin {
-            window: WindowDescriptor {
-                title: "GAME NAME".to_string(),
-                width,
-                height,
-                present_mode: PresentMode::AutoVsync,
-                ..default()
-            },
+    let mut app = App::new();
+    app.add_plugins(DefaultPlugins.set(WindowPlugin {
+        window: WindowDescriptor {
+            title: "GAME NAME".to_string(),
+            width,
+            height,
+            present_mode: PresentMode::AutoVsync,
             ..default()
-        }))
-        .run();
+        },
+        ..default()
+    }));
+    if cfg!(debug_assertions) {
+        app.add_plugin(EditorPlugin);
+    }
+    app.run();
 }
