@@ -14,8 +14,8 @@ opt-level = 1
 opt-level = 3
 
 [dependencies]
-bevy ="0.9.1"
-bevy_editor_pls = "0.2"
+bevy ="0.10.0"
+bevy_editor_pls = "0.3.1"
 
 [target.wasm32-unknown-unknown]
 runner = "wasm-server-runner"
